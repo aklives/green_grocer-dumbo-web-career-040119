@@ -18,14 +18,14 @@ def apply_coupons(cart, coupons)
       :clearance => "true",
       :count => coupon_hash[:num]
     }
-    
+
      if cart.key?(fruit_name)
       new_coupon_hash[:clearance] = cart[fruit_name][:clearance]
       if cart[fruit_name][:count]>= coupon_hash[:num]
-  
+
         cart[fruit_name][:count] -= coupon_hash[:num]
       end
-      cart[fruit_name + " W/COUPON"] = new_coupon_hash 
+      cart[fruit_name + " W/COUPON"] = new_coupon_hash
     end
     end
   return cart

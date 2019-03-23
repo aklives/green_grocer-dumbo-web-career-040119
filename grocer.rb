@@ -28,7 +28,7 @@ def apply_coupon cart, coupons
       clearance: true,
       count: coupons[:num]
     }
-  
+
     cart.each do |item, cart_hash|
       if item == coupons[:item]
         cart_hash[:count] -= coupons[:num]
@@ -36,8 +36,8 @@ def apply_coupon cart, coupons
     end
     cart["#{fruit} W/COUPON"] = new_coupon_hash
   end
-cart   
-end   
+cart
+end
 
 def apply_clearance(cart)
   # code here

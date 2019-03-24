@@ -37,8 +37,14 @@ def apply_coupons(cart, coupons)
   hash
 end
 
-def apply_clearance(cart)
-  # code here
+def apply_clearance cart
+  cart.each do |item,attr|
+    if attr[:clearance] == true
+      attr[:price] = '%.2f' % (attr[:price] * 0.80)
+    else attr[:price] = '%.2f' % (attr[:price])
+    end
+  end
+cart
 end
 
 def checkout(cart, coupons)

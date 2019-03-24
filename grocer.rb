@@ -38,7 +38,7 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance cart
-  cart.each do |item,attr|
+  cart.each do |item, attr|
     if attr[:clearance] == true
       attr[:price] = (attr[:price] * 0.80).round(2)
     end
@@ -46,6 +46,16 @@ def apply_clearance cart
 cart
 end
 
-def checkout(cart, coupons)
-  # code here
+def checkout(items, coupons)
+
+  cart = apply_clearance(apply_coupons(consolidate_cart(items), coupons))
+  
+  total = 0
+  
+  cart.each do |name, price_hash|
+    total += price_hash[:price] * price_hash[:count]
+  end
+  
+  total > 100 ? total * 0.9 : total
+  
 end
